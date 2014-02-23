@@ -14,3 +14,4 @@ border-radius: 5px; border-style:solid; border-width:1px;background-color:#46483
 div.entry div.image { padding-left:0px;}
 div.entry div.name { padding-top:10px;}
 div.entry div.num-channel { padding-top:10px;}
+.strong { font-weight:bold;}
