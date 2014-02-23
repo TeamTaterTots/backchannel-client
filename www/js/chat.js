@@ -37,7 +37,7 @@ function displayMessages(messages){
 				return icon.prefix + '64' + icon.name;
 			});
 
-	        var source = $("#places-template").html(); 
+	        var source = $("#ChatView").html(); 
 	        var template = Handlebars.compile(source);
 
 	        $('body').append(template(messages));

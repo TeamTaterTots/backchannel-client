@@ -74,11 +74,34 @@
 		</header>
 
 		{{#each channels}}
-			<div id="chan_num" class="row entry">
+			<div data-id="{{id}}" id="chan_num" class="row entry">
 				<div id="name" class="col-xs-10 chan-name">{{name}}</div>
+
 				<!-- <div id="id" data-id="{{id}}" class="col-xs-2 text-center num-participants">{{id}}</div> -->
 			</div>
 		{{/each}}
+
+		<div class="row entry create">
+			<div class="col-xs-12 create text-center">CREATE</div>
+		</div>
+
+	</script>
+
+	<script id="ChatView" type="text/html">
+
+		<header>
+			<div class="row">
+				<h1 class="text-center">#codefest</h1>
+			</div>
+		</header>
+
+		<div class="row entry .col-xs-12 ">
+			{{#messages}}
+				<div class="row entry">
+					<div class="col-xs-12 nick strong">{{nick}}{{text}}{{ts}}</div>
+				</div>
+			{{/messages}}
+		</div>
 
 		<div class="row entry create">
 			<div class="col-xs-12 create text-center">CREATE</div>
@@ -96,6 +119,7 @@
 
 	<script src="js/places.js" type="text/javascript"></script>
 	<script src="js/home.js" type="text/javascript"></script>
+	<script src="js/chat.js" type="text/javascript"></script>
 
 	<script type="text/javascript" src="js/handlebars.js"></script>
 	<script type="text/javascript" src="js/robsmobile.js"></script>
@@ -196,8 +220,32 @@
 
 				// set the contents of the view
 				view.html(template(place));
+			});			
+
+			view.on('click', '[data-id]', function() {
+				var id = $(this).data('id');
+				RobsMobile.Navigate('ChatView', { id: id });
+			})
+
+			return view;
+		});
+
+		RobsMobile.View('ChatView', function(state){
+			var view = $('<div/>'),
+				template = Handlebars.compile($('#ChatView').html());
+
+			Handlebars.registerHelper('thumbnail', function(icon) {
+				return icon.prefix + '64' + icon.name;
 			});
 
+			getPlacesXHR.done(function(venues) {
+				// venues = { venues: venues };
+				// set the contents of the view
+
+				pollMessages();
+
+				view.html(template(venues));
+			})
 			return view;
 		});
 
