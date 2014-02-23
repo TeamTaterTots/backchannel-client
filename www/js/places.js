@@ -25,7 +25,7 @@ function getVenuesNearby(latitude, longitude) {
     $.ajax({ 
            type: "GET",
            data: JSON.stringify({ 'latitude': latitude, 'longitude':longitude }),
-           url: "http://tatertots.herokuapp.com/places",
+           url: "http://www.tatertots.herokuapp.com/places",
            contentType: "application/json; charset=utf-8",
            success: function(data){        
              alert(data);
