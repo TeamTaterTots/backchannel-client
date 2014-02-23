@@ -2,7 +2,7 @@ function getLocation() {
     if ("geolocation" in navigator) {
         var timeoutVal = 10 * 1000 * 1000;
         navigator.geolocation.getCurrentPosition(
-            getVenuesNearby,
+            getPlacesNearby,
             displayError, {
                 enableHighAccuracy: true,
                 timeout: timeoutVal,
@@ -21,14 +21,34 @@ function displayError(error) {
         3: 'Request timeout'
     };
 }
-function getVenuesNearby(latitude, longitude) {
+
+function getPlacesNearby(data) {
+    var latitude = data.coords.latitude;
+    var longitude = data.coords.longitude;
+    var url = "http://tatertots.herokuapp.com/places?latitude="+latitude+"&longitude="+longitude;
     $.ajax({ 
-           type: "GET",
-           data: JSON.stringify({ 'latitude': latitude, 'longitude':longitude }),
-           url: "http://www.tatertots.herokuapp.com/places",
-           contentType: "application/json; charset=utf-8",
-           success: function(data){        
-             alert(data);
+            url: url,
+            success: function(data){        
+                displayPlaces(data);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                displayError(error);
             }
-            });
+    });
+}
+
+function displayPlaces(data){
+    if(data!=null){
+        data = { places: data };
+
+        var source = $("#places-template").html(); 
+        var template = Handlebars.compile(source);
+
+        $('body').append(template(data));
+    }
+    else{
+        alert('data null')
+    }
+
+
 }
