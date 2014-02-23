@@ -4,7 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="format-detection" content="telephone=no" />
 		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/robsmobile.css" />
@@ -20,55 +21,78 @@
 	<div id="view-container" class="app">
 	</div>
 
-	<script id="HomeView" type="text/html">
+	<script id="RegisterNickView" type="text/html">
 
 		<h1>BackChannel</h1>
-		<p>
-			This be BackChannel, bromie.
+		<p class="row">
+	    	<label for="nick" class="col-sm-2 control-label"><h2>Nickname</h2></label>
+	        <input name="nick" id="nick" type="text" class="form-control">
+	    </p>
+	    <p>
+		    <button name="button" id="save" type="button" class="btn btn-primary">Save</button>
 		</p>
-		<ul>
-			<li data-nav="AnotherView">Go away!</li>
-		</ul>
-
-		<div id="deviceready" class="blink">
-			<p class="event listening">Connecting to Device</p>
-			<p class="event received">Device is Ready</p>
-		</div>
 
 	</script>
 
-	<script id="AnotherView" type="text/html">
-		<h1>AnotherView</h1>
-		<p>
-			Just another view.
-		</p>
-		<ul>
-			<li data-nav="HomeView">Go to HomeView</li>
-		</ul>
+	<!--<div id="deviceready" class="blink">
+		<p class="event listening">Connecting to Device</p>
+		<p class="event received">Device is Ready</p>
+	</div> -->
+
+	<script id="PlacesView" type="text/html">
+		<h1>Venues</h1>
+		<div class="center-block">
+		{{#each venues}}
+		  	<div data-id="{{id}}" id="entry" class="">
+				<img class=".col-xs-6" alt="" class="img-rounded">
+				<div class=".col-xs-6" id="name">{{name}}</div>
+				<div class=".col-xs-6" id="num_channel"></div>
+			</div>
+		{{/each}}
+		</div>
+	</script>
+
+	<script id="ChannelsView" type="text/html">
+		<h1>Channels</h1>
+		<div class="center-block">
+		{{#each channels}}
+		  	<div data-id="{{id}}" id="entry" class="">
+				<div class=".col-xs-6" id="name">{{name}}</div>
+				<div class=".col-xs-6" id="num_channel"></div>
+			</div>
+		{{/each}}
+		</div>
+		<div data-nav="PlacesView">Go back PlacesView</div>
 	</script>
 
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 
-	<!--<script type="text/javascript" src="js/jquery.js"></script>-->
-	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!--<script type="text/javascript" src="js/zepto.js"></script>
 	<script type="text/javascript" src="js/zepto-callbacks.js"></script>
-	<script type="text/javascript" src="js/zepto-deferred.js"></script>
+	<script type="text/javascript" src="js/zepto-deferred.js"></script>-->
+
+	<script src="js/places.js" type="text/javascript"></script>
+	<script src="js/home.js" type="text/javascript"></script>
+
 	<script type="text/javascript" src="js/handlebars.js"></script>
 	<script type="text/javascript" src="js/robsmobile.js"></script>
 
 	<script type="text/javascript">
 		app.initialize();
-		RobsMobile.Navigate('HomeView');
+		RobsMobile.Navigate('RegisterNickView');
 	</script>
 
 	<script type="text/javascript">
 
+	// var jsonVenues;
+
 	var getVenues = $.getJSON('test-data/venues.json');
 
-	RobsMobile.View('HomeView', function(){
+	RobsMobile.View('RegisterNickView', function(){
 		var view = $('<div/>'),
-			template = Handlebars.compile($('#HomeView').html());
+			template = Handlebars.compile($('#RegisterNickView').html());
 
 		getVenues.done(function(venues){
 			// build the view model
@@ -84,29 +108,56 @@
 			view.html(venueList);
 		});
 
-		view.on('click', '[data-id]', function(){
-			var id = $(this).data('id');
-
-			RobsMobile.Navigate('AnotherView', { ID: id });
+		view.on('click', '#save', function() {
+			if (saveNick()) {
+				RobsMobile.Navigate('PlacesView');
+			}
 		});
+
+		// view.on('click', '[data-id]', function(){
+		// 	var id = $(this).data('id');
+
+		// 	RobsMobile.Navigate('PlacesView', { id: id });
+		// });
 
 		return view;
 	});
 
-	RobsMobile.View('AnotherView', function(state){
+	RobsMobile.View('PlacesView', function(state){
 		var view = $('<div/>'),
-			template = Handlebars.compile($('#AnotherView').html());
+			template = Handlebars.compile($('#PlacesView').html());
+
+		getVenues.done(function(venues) {
+			venues = { venues: venues };
+			// set the contents of the view
+			view.html(template(venues));
+		})
+
+		view.on('click', '[data-id]', function() {
+			var id = $(this).data('id');
+			RobsMobile.Navigate('ChannelsView', { id: id });
+		})
+
+		return view;
+	});
+
+
+	RobsMobile.View('ChannelsView', function(state){
+		var view = $('<div/>'),
+			template = Handlebars.compile($('#ChannelsView').html());
 		
 		getVenues.done(function(venues){
 			var venue = null;
 			
 			// find the venue with the matching ID
 			for (var i = 0; i < venues.length; i++) {
-				if (venues[i].ID === state.ID){
+				if (venues[i].id === state.id){
 					venue = venues[i];
 					break;
 				}
 			}
+
+			var channels = { channels: venue.channels }
 
 			// set the contents of the view
 			view.html(template(venue));

@@ -1,105 +1,136 @@
-{
-    "venues": [{
-        "id": "51d58e3e498eda53b54a2d91",
-        "name": "aygestan",
-        "contact": {},
-        "location": {
-            "lat": 44.3,
-            "lng": 37.2,
-            "distance": 0,
-            "cc": "RU",
-            "country": "Russia"
-        },
-        "categories": [],
-        "verified": false,
-        "restricted": true,
-        "stats": {
-            "checkinsCount": 0,
-            "usersCount": 0,
-            "tipCount": 0
-        },
-        "likes": {
-            "count": 0,
-            "groups": []
-        },
-        "specials": {
-            "count": 0,
-            "items": []
-        },
-        "hereNow": {
-            "count": 0,
-            "groups": []
-        },
-        "referralId": "v-1393130537"
-    }, {
-        "id": "521885a111d2c3fe40785492",
-        "name": "My Test Restaurant",
-        "contact": {},
-        "location": {
-            "address": "Fatehgunj, Vadodara",
-            "lat": 44.3,
-            "lng": 37.2,
-            "distance": 0,
-            "postalCode": "390001",
-            "cc": "RU",
-            "city": "Vadodara",
-            "country": "Russia"
-        },
-        "categories": [],
-        "verified": false,
-        "restricted": true,
-        "stats": {
-            "checkinsCount": 0,
-            "usersCount": 0,
-            "tipCount": 0
-        },
-        "likes": {
-            "count": 0,
-            "groups": []
-        },
-        "specials": {
-            "count": 0,
-            "items": []
-        },
-        "hereNow": {
-            "count": 0,
-            "groups": []
-        },
-        "referralId": "v-1393130537"
-    }, {
-        "id": "52189cd511d227287abe9e95",
-        "name": "Hello Restaurant 123",
-        "contact": {},
-        "location": {
-            "address": "Fatehgunj, Vadodara",
-            "lat": 44.3,
-            "lng": 37.2,
-            "distance": 0,
-            "postalCode": "390001",
-            "cc": "RU",
-            "city": "Vadodara",
-            "country": "Russia"
-        },
-        "categories": [],
-        "verified": false,
-        "restricted": true,
-        "stats": {
-            "checkinsCount": 0,
-            "usersCount": 0,
-            "tipCount": 0
-        },
-        "likes": {
-            "count": 0,
-            "groups": []
-        },
-        "specials": {
-            "count": 0,
-            "items": []
-        },
-        "hereNow": {
-            "count": 0,
-            "groups": []
-        },
-        "referralId": "v-1393130537"
-    }]
-}
+[{
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/food/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4e777ad5b3ad783092db74df",
+    "name": "Sabrina's Cafe @ Powelton",
+    "distance": 56
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4bdb828a3904a5938ce14a9e",
+    "name": "Kelly Hall",
+    "distance": 89
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "525232058bbd71f171d852e9",
+    "name": "The Dojo",
+    "distance": 71
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4ab42892f964a520287020e3",
+    "name": "Millennium Hall",
+    "distance": 54
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4c087fa55214ef3b74315e69",
+    "name": "Alpha Pi Lambda",
+    "distance": 30
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4ae4c553f964a520fb9d21e3",
+    "name": "Myers Hall",
+    "distance": 68
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/food/pizza_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "5167a390e4b02d0546949b78",
+    "name": "Pizza. Wings. Steaks.",
+    "distance": 61
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4bbbb43be5b0d13a5c686e7c",
+    "name": "Language and Communication Center",
+    "distance": 77
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4afa124cf964a520801622e3",
+    "name": "Ross Commons",
+    "distance": 61
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4ca4b4c2c1f1ef3bb58899a4",
+    "name": "Lambda Chi Alpha at Drexel",
+    "distance": 79
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "50b4f603e4b0c72f2ef5c153",
+    "name": "10th Floor Millennium",
+    "distance": 53
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4eba94e5be7b1e5620346f38",
+    "name": "Drexel PSA Building",
+    "distance": 62
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4c53b98aa724e21eeb5038f5",
+    "name": "Sigma Phi Epsilon",
+    "distance": 78
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/food/pizza_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "4ae5c5e5f964a520eca121e3",
+    "name": "California Pizza",
+    "distance": 103
+}, {
+    "icon": {
+        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
+        "sizes": [32, 44, 64, 88, 256],
+        "name": ".png"
+    },
+    "id": "50abeb67e4b04d7b173bee2a",
+    "name": "Race Hall",
+    "distance": 37
+}]
