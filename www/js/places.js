@@ -1,9 +1,9 @@
-function getLocation() {
+function getLocation(successCallback, errorCallback) {
     if ("geolocation" in navigator) {
         var timeoutVal = 10 * 1000 * 1000;
         navigator.geolocation.getCurrentPosition(
-            getPlacesNearby,
-            displayError, {
+            successCallback,
+            errorCallback, {
                 enableHighAccuracy: true,
                 timeout: timeoutVal,
                 maximumAge: 0
@@ -15,44 +15,20 @@ function getLocation() {
 }
 
 function displayError(error) {
-    var errors = {
-        1: 'Permission denied',
-        2: 'Position unavailable',
-        3: 'Request timeout'
-    };
+    alert('Error: ' + error);
 }
 
-function getPlacesNearby(data) {
+function queryPlaces(data, successCallback) {
     var latitude = data.coords.latitude;
     var longitude = data.coords.longitude;
     var url = "http://tatertots.herokuapp.com/places?latitude="+latitude+"&longitude="+longitude;
-    $.ajax({ 
+    return $.ajax({ 
             url: url,
-            success: function(data){        
-                displayPlaces(data);
+            success: function(data) {
+                successCallback();
             },
             error: function(xhr, textStatus, errorThrown){
-                displayError(error);
+                displayError(errorThrown);
             }
     });
-}
-
-function displayPlaces(data){
-    if(data!=null){
-        data = { places: data };
-		
-		Handlebars.registerHelper('thumbnail', function(icon) {
-			return icon.prefix + '64' + icon.name;
-		});
-
-        var source = $("#places-template").html(); 
-        var template = Handlebars.compile(source);
-
-        $('body').append(template(data));
-    }
-    else{
-        alert('data null')
-    }
-
-
 }

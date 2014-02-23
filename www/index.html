@@ -40,13 +40,21 @@
 	</div> -->
 
 	<script id="PlacesView" type="text/html">
-		<h1>Venues</h1>
-		<div class="center-block">
+		<div id="header" class="container-fluid center-block">
+			<header>
+				<div class="row">
+					<h1 class="text-center">Places</h1>
+				</div>
+			</header>
+		</div>
+		<div class="container-fluid main center-block">
 		{{#each venues}}
-		  	<div data-id="{{id}}" id="entry" class="">
-				<img class=".col-xs-6" alt="" class="img-rounded">
-				<div class=".col-xs-6" id="name">{{name}}</div>
-				<div class=".col-xs-6" id="num_channel"></div>
+			<div data-id="{{foursquare-venue-id}}" class="row text-center entry">
+				<div class="col-xs-2 image">
+					<img class="img-rounded" src="{{thumbnail icon}}" alt="">
+				</div>
+				<div class="col-xs-8 name">{{name}}</div>
+				<div class="col-xs-2 num-channel">###</div>
 			</div>
 		{{/each}}
 		</div>
@@ -81,89 +89,107 @@
 
 	<script type="text/javascript">
 		app.initialize();
-		RobsMobile.Navigate('RegisterNickView');
 	</script>
 
 	<script type="text/javascript">
 
-	// var jsonVenues;
+	var getPlacesXHR;
+	// var getPlacesXHR = $.getJSON('test-data/venues.json');
 
-	var getVenues = $.getJSON('test-data/venues.json');
+	var createViews = function() {
 
-	RobsMobile.View('RegisterNickView', function(){
-		var view = $('<div/>'),
-			template = Handlebars.compile($('#RegisterNickView').html());
+		RobsMobile.View('RegisterNickView', function(){
 
-		getVenues.done(function(venues){
-			// build the view model
-			var viewModel = {
-				count: venues.length,
-				venues: venues
-			};
+			Handlebars.registerHelper('thumbnail', function(icon) {
+				if (icon == null || icon.prefix == null || icon.name == null)
+					return '#';
+				return icon.prefix + '64' + icon.name;
+			});
 
-			// build the contents of the view from a template
-			var venueList = template(viewModel);
+			var view = $('<div/>'),
+				template = Handlebars.compile($('#RegisterNickView').html());
 
-			// set the contents of the view
-			view.html(venueList);
-		});
+			getPlacesXHR.done(function(venues){
+				// build the view model
+				var viewModel = {
+					count: venues.length,
+					venues: venues
+				};
 
-		view.on('click', '#save', function() {
-			if (saveNick()) {
-				RobsMobile.Navigate('PlacesView');
-			}
-		});
+				// build the contents of the view from a template
+				var venueList = template(viewModel);
 
-		// view.on('click', '[data-id]', function(){
-		// 	var id = $(this).data('id');
+				// set the contents of the view
+				view.html(venueList);
+			});
 
-		// 	RobsMobile.Navigate('PlacesView', { id: id });
-		// });
-
-		return view;
-	});
-
-	RobsMobile.View('PlacesView', function(state){
-		var view = $('<div/>'),
-			template = Handlebars.compile($('#PlacesView').html());
-
-		getVenues.done(function(venues) {
-			venues = { venues: venues };
-			// set the contents of the view
-			view.html(template(venues));
-		})
-
-		view.on('click', '[data-id]', function() {
-			var id = $(this).data('id');
-			RobsMobile.Navigate('ChannelsView', { id: id });
-		})
-
-		return view;
-	});
-
-
-	RobsMobile.View('ChannelsView', function(state){
-		var view = $('<div/>'),
-			template = Handlebars.compile($('#ChannelsView').html());
-		
-		getVenues.done(function(venues){
-			var venue = null;
-			
-			// find the venue with the matching ID
-			for (var i = 0; i < venues.length; i++) {
-				if (venues[i].id === state.id){
-					venue = venues[i];
-					break;
+			view.on('click', '#save', function() {
+				if (saveNick()) {
+					RobsMobile.Navigate('PlacesView');
 				}
-			}
+			});
 
-			var channels = { channels: venue.channels }
-
-			// set the contents of the view
-			view.html(template(venue));
+			return view;
 		});
 
-		return view;
+
+		// var getPlacesXHR = $.getJSON('test-data/venues.json');
+
+		RobsMobile.View('PlacesView', function(state){
+			var view = $('<div/>'),
+				template = Handlebars.compile($('#PlacesView').html());
+
+			getPlacesXHR.done(function(venues) {
+				venues = { venues: venues };
+				// set the contents of the view
+				view.html(template(venues));
+			})
+
+			view.on('click', '[data-id]', function() {
+				var id = $(this).data('id');
+				RobsMobile.Navigate('ChannelsView', { id: id });
+			})
+
+			return view;
+		});
+
+
+		RobsMobile.View('ChannelsView', function(state){
+			var view = $('<div/>'),
+				template = Handlebars.compile($('#ChannelsView').html());
+			
+			getPlacesXHR.done(function(venues){
+				var venue = null;
+				
+				// find the venue with the matching ID
+				for (var i = 0; i < venues.length; i++) {
+					if (venues[i].id === state.id){
+						venue = venues[i];
+						break;
+					}
+				}
+
+				if (venue == null) {
+					venue = { channels: [], id: '', name: ''}
+				}
+
+				// set the contents of the view
+				view.html(template(venue));
+			});
+
+			return view;
+		});
+
+	}
+
+	getLocation(function(data) {
+		getPlacesXHR = queryPlaces(data, function(data) {
+			createViews();
+			RobsMobile.Navigate('RegisterNickView');
+		});
+	},
+		function() {
+			alert('error ocurred, FUCK');
 	});
 
 	</script>
