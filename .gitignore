@@ -19,6 +19,9 @@ Android/assets/
 # generated files
 bin/
 gen/
+tmp/
+*.tmp
+*.log
 
 # Local configuration file (sdk path, etc)
 local.properties
