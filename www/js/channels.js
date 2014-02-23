@@ -24,9 +24,12 @@ function displayChannels(data){
         var template = Handlebars.compile(source);
 
         $('body').append(template(data));
-        $(chan_num).click(function() {
+
+        window.localStorage.setItem('chan_num', 2, false);
+        /*$(chan_num).click(function() {
                 window.localStorage.setItem('chan_num', $(chan_num).children('div.id').text(), false);
-            });
+            });*/
+        
     }
     else{
         alert('data null')

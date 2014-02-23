@@ -13,22 +13,20 @@
 		<div id="header" class="container-fluid center-block">
 			<header>
 				<div class="row">
-					<h1 class="text-center">#channel</h1>
+					<h1 class="text-center">#codefest</h1>
 				</div>
 			</header>
 
-		<div class="center-block">
-			<div class="row entry.col-xs-12 ">
+
 				<script id="places-template" type="text/x-handlebars-template">
-					{{#each message}}
+			<div class="row entry .col-xs-12 ">
+					{{#messages}}
 						<div class="row entry">
-							<div class="col-xs-2 text-center nick strong">{{nick}}</div>
-							<div class="col-xs-8 chan-name">{{{text}}</div>
-							<div class="col-xs-1 time">{{time_stamp}}</div>
+							<div class="col-xs-12 nick strong">{{nick}}{{text}}{{ts}}</div>
 						</div>
-					{{/each}}
+					{{/messages}}
 				</script>
-			</div>
+		
 		</div>
 			<div class="form-inline text-center">
 				<input class="form-control" id ="text" type="text"></input>
@@ -37,8 +35,9 @@
 
 		</div>
 		<script type="text/javascript">
-			$( "#post" ).click(function() {
-				postMessage($(text).val());
+			$(function() {
+				pollMessages();
 			});
+
 		</script>
 </html>

@@ -1,4 +1,5 @@
 function postMessage(text) {
+	var chan_num = window.localStorage['chan_num'];
     var url = "http://tatertots.herokuapp.com/channels"+chan_num+"messages";
     var now = new Date;
 	var utc_timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 
@@ -30,6 +31,7 @@ function displayError(error) {
 
 function displayMessages(messages){
 	if(messages!=null){
+		console.log(messages)
 			
 			Handlebars.registerHelper('thumbnail', function(icon) {
 				return icon.prefix + '64' + icon.name;
@@ -43,4 +45,21 @@ function displayMessages(messages){
 	    else{
 	        alert('data null')
 	    }
+}
+
+function pollMessages(){
+
+	setInterval ( function() {
+    	$.ajax({ 
+            url: "http://tatertots.herokuapp.com/channels/2/messages?ts=2014-02-20%2015:45:47.283633",
+            success: function(data){
+            	var data = data;//["messages"];
+            	displayMessages(data);
+            },
+            error: function(xhr, textStatus, errorThrown){
+                displayError(error);
+            }
+        })}, 400 );
+	//setTimeout ( function(){}, 300 );
+
 }
