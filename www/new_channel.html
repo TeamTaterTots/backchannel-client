@@ -12,27 +12,18 @@
 		<div id="header" class="container-fluid center-block">
 			<header>
 				<div class="row">
-					<h1 class="text-center">Channels</h1>
+					<h1 class="text-center">Create Channel</h1>
 				</div>
 			</header>
 		</div>
 		<div class="container-fluid main center-block">
-			<script id="places-template" type="text/x-handlebars-template">
-				{{#each places}}
-					<div class="row entry">
-						<div class="col-xs-10 chan-name">{{name}}</div>
-						<div class="col-xs-2 text-center num-participants">###</div>
-					</div>
-				{{/each}}
+			<div class="row entry form-inline text-center">
+				<label for="channel_name" class="col-sx-2 control-label">Channel name</label>
+				<input name="channel_name" id="nick" type="text" class="form-control col-xs-2 input-med text-center">
+			</div>
 			<div class="row entry create">
 				<div class="col-xs-12 create text-center">CREATE</div>
 			</div>
-			</script>
 		</div>
 	</body>
-	<script type="text/javascript">
-	$(function() {
-			getLocation()
-		});
-	</script>
 </html>

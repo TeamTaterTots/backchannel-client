@@ -15,3 +15,6 @@ div.entry div.image { padding-left:0px;}
 div.entry div.name { padding-top:10px;}
 div.entry div.num-channel { padding-top:10px;}
 .strong { font-weight:bold;}
+div.entry.create {margin:15px; padding:10px; font-size:15px; border-color:#73a53e; background-color:#73a53e; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+border-radius: 5px; border-style:solid; border-width:1px; color:#d2d8ba; }
+div.entry div.create  { text-size:30px;}
