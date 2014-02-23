@@ -2,7 +2,7 @@ function getLocation() {
     if ("geolocation" in navigator) {
         var timeoutVal = 10 * 1000 * 1000;
         navigator.geolocation.getCurrentPosition(
-            displayPosition,
+            getVenuesNearby,
             displayError, {
                 enableHighAccuracy: true,
                 timeout: timeoutVal,
@@ -14,11 +14,6 @@ function getLocation() {
     }
 }
 
-function displayPosition(position) {
-    alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
-    getVenuesNearby(position.coords.latitude, position.coords.longitude);
-}
-
 function displayError(error) {
     var errors = {
         1: 'Permission denied',
@@ -27,23 +22,13 @@ function displayError(error) {
     };
 }
 function getVenuesNearby(latitude, longitude) {
-    request = $.ajax({
-        url: "tatertots.herokuapp.com/places",
-        type: "get",
-        data: position
-    });
-
-    // callback handler that will be called on success
-    request.done(function (response, textStatus, jqXHR){
-        // log a message to the console
-        console.log("Hooray, it worked!");
-    });
-
-    request.fail(function (jqXHR, textStatus, errorThrown){
-        // log the error to the console
-        console.error(
-            "The following error occured: "+
-            textStatus, errorThrown
-        );
-    });
+    $.ajax({ 
+           type: "GET",
+           data: JSON.stringify({ 'latitude': latitude, 'longitude':longitude }),
+           url: "http://tatertots.herokuapp.com/places",
+           contentType: "application/json; charset=utf-8",
+           success: function(data){        
+             alert(data);
+            }
+            });
 }
