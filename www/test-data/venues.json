@@ -1,136 +1,153 @@
-[{
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/food/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4e777ad5b3ad783092db74df",
-    "name": "Sabrina's Cafe @ Powelton",
-    "distance": 56
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4bdb828a3904a5938ce14a9e",
-    "name": "Kelly Hall",
-    "distance": 89
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "525232058bbd71f171d852e9",
-    "name": "The Dojo",
-    "distance": 71
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4ab42892f964a520287020e3",
-    "name": "Millennium Hall",
-    "distance": 54
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4c087fa55214ef3b74315e69",
-    "name": "Alpha Pi Lambda",
-    "distance": 30
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4ae4c553f964a520fb9d21e3",
-    "name": "Myers Hall",
-    "distance": 68
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/food/pizza_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "5167a390e4b02d0546949b78",
-    "name": "Pizza. Wings. Steaks.",
-    "distance": 61
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4bbbb43be5b0d13a5c686e7c",
-    "name": "Language and Communication Center",
-    "distance": 77
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4afa124cf964a520801622e3",
-    "name": "Ross Commons",
-    "distance": 61
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4ca4b4c2c1f1ef3bb58899a4",
-    "name": "Lambda Chi Alpha at Drexel",
-    "distance": 79
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "50b4f603e4b0c72f2ef5c153",
-    "name": "10th Floor Millennium",
-    "distance": 53
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4eba94e5be7b1e5620346f38",
-    "name": "Drexel PSA Building",
-    "distance": 62
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4c53b98aa724e21eeb5038f5",
-    "name": "Sigma Phi Epsilon",
-    "distance": 78
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/food/pizza_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "4ae5c5e5f964a520eca121e3",
-    "name": "California Pizza",
-    "distance": 103
-}, {
-    "icon": {
-        "prefix": "https://ss1.4sqi.net/img/categories/education/default_",
-        "sizes": [32, 44, 64, 88, 256],
-        "name": ".png"
-    },
-    "id": "50abeb67e4b04d7b173bee2a",
-    "name": "Race Hall",
-    "distance": 37
-}]
+{
+    "places": [{
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4be88858c5220f4715dca9ca",
+        "name": "The Courts Apartments",
+        "distance": "74.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4b69e426f964a5208dba2be3",
+        "name": "Samuel Powel Elementary",
+        "distance": "87.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4beb2be2b3352d7f4f2456d2",
+        "name": "Pi Kappa Phi",
+        "distance": "113.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "51d4b51e498e0eded1c0386d",
+        "name": "소미네",
+        "distance": "35.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/arts_entertainment/artgallery_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4ec6f5fd61af9e142f22467b",
+        "name": "Drew School",
+        "distance": "8.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4ac8f67cf964a520a0bd20e3",
+        "name": "TKE",
+        "distance": "58.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/education/sororityhouse_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4bef5a3896edc9b6e7ae4af2",
+        "name": "Phi Mu",
+        "distance": "74.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "504fb075e4b0c9fad2366d3d",
+        "name": "T-Dog \u0026 Baby J's",
+        "distance": "112.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/parks_outdoors/playground_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4bf07af724f19c74d23bf983",
+        "name": "The Tot Lot",
+        "distance": "39.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/education/frathouse_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4fce6614e4b0c300d52d87c9",
+        "name": "Phi Mu Fire escape",
+        "distance": "70.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "50552cfbe4b0540a804868a7",
+        "name": "The Underground",
+        "distance": "43.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/parks_outdoors/farm_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4c43931b2d3ec9b694c12dae",
+        "name": "The Institute of Social Medicine and Community Health",
+        "distance": "43.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/travel/airport_rentalcar_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "51364cf31b195a5418ffbd11",
+        "name": "Enterprise CarShare",
+        "distance": "46.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/building/default_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4ce3703bdc85a1438db945d2",
+        "name": "TKE 2nd Floor Head",
+        "distance": "48.0",
+        "channels": []
+    }, {
+        "icon": {
+            "prefix": "https://ss1.4sqi.net/img/categories/nightlife/stripclub_",
+            "sizes": [32, 44, 64, 88, 256],
+            "name": ".png"
+        },
+        "id": "4c09c5f4340720a15f788593",
+        "name": "Barcelona, Spain",
+        "distance": "48.0",
+        "channels": []
+    }]
+}
