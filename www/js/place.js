@@ -25,6 +25,25 @@ function displayError(error) {
         3: 'Request timeout'
     };
 }
-function getVenuesNearby(position) {
-    
+function getVenuesNearby() {
+    position = getLocation();
+    request = $.ajax({
+        url: "tatertots.herokuapp.com/places",
+        type: "get",
+        data: position
+    });
+
+    // callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // log a message to the console
+        console.log("Hooray, it worked!");
+    });
+
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // log the error to the console
+        console.error(
+            "The following error occured: "+
+            textStatus, errorThrown
+        );
+    });
 }
