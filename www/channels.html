@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/backchannel.css">
+		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/handlebars.js" type="text/javascript"></script>
+		<script src="js/places.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	</head>
+	<body>
+		<div id="header" class="container-fluid center-block">
+			<header>
+				<div class="row">
+					<h1 class="text-center">Channels</h1>
+				</div>
+			</header>
+		</div>
+		<div class="container-fluid main center-block">
+			<script id="places-template" type="text/x-handlebars-template">
+				{{#each places}}
+					<div class="row entry">
+						<div class="col-xs-10 chan-name">{{name}}</div>
+						<div class="col-xs-2 text-center num-participants">###</div>
+					</div>
+				{{/each}}
+			</script>
+
+		</div>
+	</body>
+	<script type="text/javascript">
+	$(function() {
+			getLocation()
+		});
+	</script>
+</html>
