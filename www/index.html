@@ -1,43 +1,121 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/robsmobile.css" />
+		<title>BackChannel</title>
+
+		<style type="text/css">
+		</style>
+
+	</head>
+	<body>
+
+	<!-- This is where views will be placed/removed from -->
+	<div id="view-container" class="app">
+	</div>
+
+	<script id="HomeView" type="text/html">
+
+		<h1>BackChannel</h1>
+		<p>
+			This be BackChannel, bromie.
+		</p>
+		<ul>
+			<li data-nav="AnotherView">Go away!</li>
+		</ul>
+
+		<div id="deviceready" class="blink">
+			<p class="event listening">Connecting to Device</p>
+			<p class="event received">Device is Ready</p>
+		</div>
+
+	</script>
+
+	<script id="AnotherView" type="text/html">
+		<h1>AnotherView</h1>
+		<p>
+			Just another view.
+		</p>
+		<ul>
+			<li data-nav="HomeView">Go to HomeView</li>
+		</ul>
+	</script>
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+
+	<!--<script type="text/javascript" src="js/jquery.js"></script>-->
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/zepto-callbacks.js"></script>
+	<script type="text/javascript" src="js/zepto-deferred.js"></script>
+	<script type="text/javascript" src="js/handlebars.js"></script>
+	<script type="text/javascript" src="js/robsmobile.js"></script>
+
+	<script type="text/javascript">
+		app.initialize();
+		RobsMobile.Navigate('HomeView');
+	</script>
+
+	<script type="text/javascript">
+
+	var getVenues = $.getJSON('test-data/venues.json');
+
+	RobsMobile.View('HomeView', function(){
+		var view = $('<div/>'),
+			template = Handlebars.compile($('#HomeView').html());
+
+		getVenues.done(function(venues){
+			// build the view model
+			var viewModel = {
+				count: venues.length,
+				venues: venues
+			};
+
+			// build the contents of the view from a template
+			var venueList = template(viewModel);
+
+			// set the contents of the view
+			view.html(venueList);
+		});
+
+		view.on('click', '[data-id]', function(){
+			var id = $(this).data('id');
+
+			RobsMobile.Navigate('AnotherView', { ID: id });
+		});
+
+		return view;
+	});
+
+	RobsMobile.View('AnotherView', function(state){
+		var view = $('<div/>'),
+			template = Handlebars.compile($('#AnotherView').html());
+		
+		getVenues.done(function(venues){
+			var venue = null;
+			
+			// find the venue with the matching ID
+			for (var i = 0; i < venues.length; i++) {
+				if (venues[i].ID === state.ID){
+					venue = venues[i];
+					break;
+				}
+			}
+
+			// set the contents of the view
+			view.html(template(venue));
+		});
+
+		return view;
+	});
+
+	</script>
+
+	</body>
 </html>

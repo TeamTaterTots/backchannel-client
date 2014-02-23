@@ -1,0 +1,21 @@
+#view-container > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	margin-top: 0;
+
+	/*transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;*/
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+.off-right {
+	transform: translateX(100%);
+	-webkit-transform: translateX(100%);
+}
+
+.off-left {
+	transform: translateX(-100%);
+	-webkit-transform: translateX(-100%);
+}

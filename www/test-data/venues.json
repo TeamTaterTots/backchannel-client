@@ -1,0 +1,105 @@
+{
+    "venues": [{
+        "id": "51d58e3e498eda53b54a2d91",
+        "name": "aygestan",
+        "contact": {},
+        "location": {
+            "lat": 44.3,
+            "lng": 37.2,
+            "distance": 0,
+            "cc": "RU",
+            "country": "Russia"
+        },
+        "categories": [],
+        "verified": false,
+        "restricted": true,
+        "stats": {
+            "checkinsCount": 0,
+            "usersCount": 0,
+            "tipCount": 0
+        },
+        "likes": {
+            "count": 0,
+            "groups": []
+        },
+        "specials": {
+            "count": 0,
+            "items": []
+        },
+        "hereNow": {
+            "count": 0,
+            "groups": []
+        },
+        "referralId": "v-1393130537"
+    }, {
+        "id": "521885a111d2c3fe40785492",
+        "name": "My Test Restaurant",
+        "contact": {},
+        "location": {
+            "address": "Fatehgunj, Vadodara",
+            "lat": 44.3,
+            "lng": 37.2,
+            "distance": 0,
+            "postalCode": "390001",
+            "cc": "RU",
+            "city": "Vadodara",
+            "country": "Russia"
+        },
+        "categories": [],
+        "verified": false,
+        "restricted": true,
+        "stats": {
+            "checkinsCount": 0,
+            "usersCount": 0,
+            "tipCount": 0
+        },
+        "likes": {
+            "count": 0,
+            "groups": []
+        },
+        "specials": {
+            "count": 0,
+            "items": []
+        },
+        "hereNow": {
+            "count": 0,
+            "groups": []
+        },
+        "referralId": "v-1393130537"
+    }, {
+        "id": "52189cd511d227287abe9e95",
+        "name": "Hello Restaurant 123",
+        "contact": {},
+        "location": {
+            "address": "Fatehgunj, Vadodara",
+            "lat": 44.3,
+            "lng": 37.2,
+            "distance": 0,
+            "postalCode": "390001",
+            "cc": "RU",
+            "city": "Vadodara",
+            "country": "Russia"
+        },
+        "categories": [],
+        "verified": false,
+        "restricted": true,
+        "stats": {
+            "checkinsCount": 0,
+            "usersCount": 0,
+            "tipCount": 0
+        },
+        "likes": {
+            "count": 0,
+            "groups": []
+        },
+        "specials": {
+            "count": 0,
+            "items": []
+        },
+        "hereNow": {
+            "count": 0,
+            "groups": []
+        },
+        "referralId": "v-1393130537"
+    }]
+}
