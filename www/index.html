@@ -49,9 +49,11 @@
 				</div>
 			</header>
 		</div>
+
 		<div class="container-fluid main center-block">
+
 		{{#each places}}
-			<div data-id="{{foursquare-venue-id}}" class="row text-center entry">
+			<div data-id="{{id}}" class="row text-center entry">
 				<div class="col-xs-2 image">
 					<img class="img-rounded" src="{{thumbnail icon}}" alt="">
 				</div>
@@ -59,20 +61,29 @@
 				<div class="col-xs-2 num-channel">###</div>
 			</div>
 		{{/each}}
+
 		</div>
 	</script>
 
 	<script id="ChannelsView" type="text/html">
-		<h1>Channels</h1>
-		<div class="center-block">
+
+		<header>
+			<div class="row">
+				<h1 class="text-center">Channels</h1>
+			</div>
+		</header>
+
 		{{#each channels}}
-		  	<div data-id="{{id}}" id="entry" class="">
-				<div class=".col-xs-6" id="name">{{name}}</div>
-				<div class=".col-xs-6" id="num_channel"></div>
+			<div id="chan_num" class="row entry">
+				<div id="name" class="col-xs-10 chan-name">{{name}}</div>
+				<!-- <div id="id" data-id="{{id}}" class="col-xs-2 text-center num-participants">{{id}}</div> -->
 			</div>
 		{{/each}}
+
+		<div class="row entry create">
+			<div class="col-xs-12 create text-center">CREATE</div>
 		</div>
-		<div data-nav="PlacesView">Go back PlacesView</div>
+
 	</script>
 
 	<script type="text/javascript" src="cordova.js"></script>
@@ -114,7 +125,7 @@
 			getPlacesXHR.done(function(venues){
 				// build the view model
 				var viewModel = {
-					count: venues.length,
+					count: venues.places.length,
 					venues: venues
 				};
 
@@ -161,22 +172,30 @@
 				template = Handlebars.compile($('#ChannelsView').html());
 			
 			getPlacesXHR.done(function(venues){
-				var venue = null;
+				var place = null;
 				
-				// find the venue with the matching ID
-				for (var i = 0; i < venues.length; i++) {
-					if (venues[i].id === state.id){
-						venue = venues[i];
+				// find the place with the matching ID
+				for (var i = 0; i < venues.places.length; i++) {
+					if (venues.places[i].id === state.id){
+						place = venues.places[i];
 						break;
 					}
 				}
 
-				if (venue == null) {
-					venue = { channels: [], id: '', name: ''}
+				// TODO REMOVE
+				// i'm cheating here
+				if (place == null) {
+					place = { id: '4c80f8a62f1c236aac072b43'};
+				}
+
+				if (place == null) {
+					place = { channels: [], id: '', name: '', distance: '', 
+						icon: { name: '', prefix: '', sizes: '' }
+					};
 				}
 
 				// set the contents of the view
-				view.html(template(venue));
+				view.html(template(place));
 			});
 
 			return view;
@@ -191,7 +210,7 @@
 		});
 	},
 		function() {
-			alert('error ocurred, FUCK');
+			alert('Error: getLocation failed.');
 	});
 
 	</script>
