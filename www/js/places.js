@@ -40,6 +40,10 @@ function getPlacesNearby(data) {
 function displayPlaces(data){
     if(data!=null){
         data = { places: data };
+		
+		Handlebars.registerHelper('thumbnail', function(icon) {
+			return icon.prefix + '64' + icon.name;
+		});
 
         var source = $("#places-template").html(); 
         var template = Handlebars.compile(source);
