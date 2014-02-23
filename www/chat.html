@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/backchannel.css">
 		<script src="js/jquery.js" type="text/javascript"></script>
 		<script src="js/handlebars.js" type="text/javascript"></script>
-		<script src="js/places.js" type="text/javascript"></script>
+		<script src="js/chat.js" type="text/javascript"></script>
 		<!--<script src="js/chat_list.js" type="text/javascript"></script>-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	</head>
@@ -16,22 +16,29 @@
 					<h1 class="text-center">#channel</h1>
 				</div>
 			</header>
+
+		<div class="center-block">
+			<div class="row entry.col-xs-12 ">
+				<script id="places-template" type="text/x-handlebars-template">
+					{{#each message}}
+						<div class="row entry">
+							<div class="col-xs-2 text-center nick strong">{{nick}}</div>
+							<div class="col-xs-8 chan-name">{{{text}}</div>
+							<div class="col-xs-1 time">{{time_stamp}}</div>
+						</div>
+					{{/each}}
+				</script>
+			</div>
 		</div>
-		<div class="container-fluid main center-block">
-			<script id="places-template" type="text/x-handlebars-template">
-				{{#each places}}
-					<div class="row entry">
-						<div class="col-xs-2 text-center nick strong">nick</div>
-						<div class="col-xs-8 chan-name">messagemessamessagemessage</div>
-						<div class="col-xs-1 time">6:42AM</div>
-					</div>
-				{{/each}}
-			</script>
+			<div class="form-inline text-center">
+				<input class="form-control" id ="text" type="text"></input>
+				<button name="button" id="post" type="button" class="btn btn-primary">Submit</button>
+			</div>
+
 		</div>
-	</body>
-	<script type="text/javascript">
-	$(function() {
-			getLocation()
-		});
-	</script>
+		<script type="text/javascript">
+			$( "#post" ).click(function() {
+				postMessage($(text).val());
+			});
+		</script>
 </html>
